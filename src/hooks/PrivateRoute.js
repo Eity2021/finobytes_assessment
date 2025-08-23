@@ -1,12 +1,23 @@
-// src/routes/PrivateRoute.js
-import { Navigate, Outlet } from "react-router";
+// // src/routes/PrivateRoute.js
+// import { Navigate, Outlet } from "react-router";
 
-export default function PrivateRoute() {
-  const auth = JSON.parse(localStorage.getItem("auth")); 
+// export default function PrivateRoute({ allowedRoles }) {
+//   const auth = JSON.parse(localStorage.getItem("auth"));
 
-  if (!auth?.token && !auth?.role) return <Navigate to="/login" replace />;
+//   if (!auth?.token) {
+//     return <Navigate to="/login" replace />;
+//   }
 
-  if (auth?.role && auth.role !== auth?.role) return <Navigate to="/forbidden" replace />;
+//   return <Outlet />; 
+// }
 
-  return <Outlet />;
+import React from 'react';
+import { Navigate } from 'react-router';
+
+export default function PrivateRoutes({ children }) {
+  const auth = JSON.parse(localStorage.getItem("auth"));
+  if (auth?.token && auth?.role) {
+    return children;
+  }
+  return <Navigate to="/login" replace={true}></Navigate>;
 }

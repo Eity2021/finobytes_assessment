@@ -8,7 +8,7 @@ import { userLoggedIn } from "../../features/auth/authSlice";
 export default function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  // Initialize react-hook-form
+
   const {
     register,
     handleSubmit,
@@ -17,7 +17,6 @@ export default function Login() {
 
     const [resLogin, { data, isLoading, error: loginError }] = useLoginMutation();
 
-    console.log("data", data)
     useEffect(() => {
     if (data?.token) {
       dispatch(userLoggedIn());
@@ -25,13 +24,11 @@ export default function Login() {
       navigate("/");
     }
   }, [data, dispatch]);
-
-
-
+    
   // On form submit
   const onSubmit = (formData) => {
     console.log(formData); 
-resLogin({
+    resLogin({
       email: formData.email,
       password: formData.password,
     });

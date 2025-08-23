@@ -13,7 +13,7 @@ const adminRoutes = [
     icon: <LayoutDashboard  size={20} />,
     element: (
       <Suspense fallback={<p>Loading...</p>}>
-        <PrivateRoute>
+        <PrivateRoute >
         <Dashboard />
         </PrivateRoute>
       </Suspense>
@@ -39,8 +39,6 @@ const adminRoutes = [
       },
     ],
   },
-
-
 ];
 
 export default adminRoutes;
