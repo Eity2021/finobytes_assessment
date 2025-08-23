@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
 import { useLoginMutation } from "../../features/auth/authApi";
 import { userLoggedIn } from "../../features/auth/authSlice";
-
+import {toast } from 'react-toastify';
 export default function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -22,6 +22,7 @@ export default function Login() {
       dispatch(userLoggedIn());
       // dispatch(setUser(data));
       navigate("/");
+      toast.success("Login Successfully")
     }
   }, [data, dispatch]);
     
