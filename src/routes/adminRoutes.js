@@ -1,7 +1,9 @@
 import  { Suspense } from "react";
 import Data from "../pages/admin/data/Data";
 import Dashboard from "../pages/home/Dashboard";
-import { LayoutDashboard,BetweenHorizontalEnd ,ListEnd ,SquarePlus ,ChartBarStacked} from "lucide-react";
+
+import { LayoutDashboard,BetweenHorizontalEnd ,ListEnd} from "lucide-react";
+import PrivateRoute from "../hooks/PrivateRoute";
 
 const adminRoutes = [
 
@@ -11,7 +13,9 @@ const adminRoutes = [
     icon: <LayoutDashboard  size={20} />,
     element: (
       <Suspense fallback={<p>Loading...</p>}>
+        <PrivateRoute>
         <Dashboard />
+        </PrivateRoute>
       </Suspense>
     ),
   },
@@ -27,7 +31,9 @@ const adminRoutes = [
         icon: <ListEnd    size={20} />,
         element: (
           <Suspense fallback={<p>Loading...</p>}>
-            <Data></Data>
+            <PrivateRoute>
+            <Data />
+            </PrivateRoute>
           </Suspense>
         ),
       },

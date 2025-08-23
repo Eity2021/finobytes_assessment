@@ -17,7 +17,8 @@ export default function Login() {
 
     const [resLogin, { data, isLoading, error: loginError }] = useLoginMutation();
 
-      useEffect(() => {
+    console.log("data", data)
+    useEffect(() => {
     if (data?.token) {
       dispatch(userLoggedIn());
       // dispatch(setUser(data));
@@ -31,7 +32,7 @@ export default function Login() {
   const onSubmit = (formData) => {
     console.log(formData); 
 resLogin({
-      login: formData.login,
+      email: formData.email,
       password: formData.password,
     });
 

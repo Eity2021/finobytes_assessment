@@ -18,14 +18,14 @@ export const authApi = apiSlice.injectEndpoints({
             "auth",
             JSON.stringify({
               token: result.data.token,
-              role: result?.data?.role,
+              role: result?.data?.user?.role,
             })
           );
-      
+      console.log("result", result?.data?.user?.role)
           dispatch(
             userLoggedIn({
               token: result.data.token,
-              user: result?.data?.role,
+              role: result?.data?.user?.role,
             })
           );
         } catch (err) { }
