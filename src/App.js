@@ -9,27 +9,21 @@ import {
 
 import Login from "./constants/auth/Login";
 import Main from "./constants/main/Main";
+import PrivateRoutes from "./hooks/PrivateRoute";
 
 function App() {
-
-
+  const auth = JSON.parse(localStorage.getItem("auth"));
   return (
     <>
-
       <Router>
         <Routes>
           <Route path="/login" element={<Login />} />
-          {/* Place new routes over this */}
-          <Route path="/*" element={<Main />} />
-          {/* <Route
+          <Route path="/*" element={<PrivateRoutes> <Main /></PrivateRoutes>} />
+          <Route
             path="*"
-            element={<Navigate to={token ? "/welcome" : "/login"} replace />}
-          /> */}
+            element={<Navigate to={auth?.token ? "/welcome" : "/login"} replace />} />
         </Routes>
       </Router>
-
-
-
     </>
   );
 }

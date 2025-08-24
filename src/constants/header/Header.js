@@ -1,5 +1,4 @@
-import SideHeader from "./SideHeader";
-
+import TopHeader from "./TopHeader";
 export default function Header({ isOpen, setIsOpen }) {
   return (
     <>
@@ -22,7 +21,7 @@ export default function Header({ isOpen, setIsOpen }) {
               d="M4 6h16M4 12h16m-7 6h7" />
           </svg>
         </button>
-        <SideHeader></SideHeader>
+        <TopHeader></TopHeader>
       </header>
     </>
   );
