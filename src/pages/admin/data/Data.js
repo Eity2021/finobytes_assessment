@@ -15,7 +15,7 @@ const data = [
 
   return (
     <>
-   <div className="p-6 bg-gray-100 min-h-screen">
+   <div className="p-6 bg-gray-100 h-screen">
       <div className="overflow-x-auto bg-white shadow-md rounded-lg">
         <table className="min-w-full table-auto border-collapse">
           <thead className="bg-gray-800 text-white">

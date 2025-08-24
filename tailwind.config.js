@@ -8,11 +8,14 @@ module.exports = {
   theme: {
     extend: {
          colors: {
-        primary: "#1F2937",
+        primary: "#437B0D",
         secondary: "#ad2a26",
         danger: "#DC2626",
         success: "#16A34A",
-        editButton:"#2F6CD0"
+        editButton:"#2F6CD0",
+        borderColor:"#f1f1f1",
+        text_paragraph:"#4a5568",
+        heading:"#222"
 
       },
     },
