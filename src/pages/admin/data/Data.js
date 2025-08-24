@@ -2,9 +2,10 @@
 import React, { useState } from "react";
 import { Eye, Pencil, Trash2, ChevronRight, ChevronLeft } from "lucide-react";
 import Modal from "../../../components/modal/Modal";
+import { useGetUserQuery } from "../../../features/users/userApi";
 
 export default function Data() {
-
+  const auth = JSON.parse(localStorage.getItem("auth"));
   const data = [
     { id: 1, name: "John Doe", email: "john@example.com", role: "Admin" },
     { id: 2, name: "Jane Smith", email: "jane@example.com", role: "Member" },
@@ -12,7 +13,14 @@ export default function Data() {
     { id: 4, name: "Alice Brown", email: "alice@example.com", role: "Member" },
   ];
 
+  const {
+    data: user,
+    isLoading,
+    isError,
+    error,
+  } = useGetUserQuery(auth?.role);
 
+  console.log("user", user?.users)
   return (
     <>
       <div className="p-6 bg-gray-100 h-screen">
@@ -37,7 +45,7 @@ export default function Data() {
               </tr>
             </thead>
             <tbody className="text-gray-700">
-              {data.map((user) => (
+              {user?.users?.map((user) => (
                 <tr
                   key={user.id}
                   className="border-b hover:bg-gray-100 transition">

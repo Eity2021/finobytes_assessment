@@ -1,7 +1,10 @@
 import React from 'react'
+import Cards from './Cards'
 
 export default function MerchantDashboard() {
     return (
-        <div>Index</div>
+        <div>
+            <Cards></Cards>
+        </div>
     )
 }

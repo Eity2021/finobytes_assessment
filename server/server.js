@@ -10,7 +10,7 @@ const app = express();
 const PORT = 5000;
 
 // Middleware
-app.use(cors({ origin: true,credentials: true }));
+app.use(cors({ origin: true, credentials: true }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -33,8 +33,6 @@ let USERS = await seedUsers();
 const signToken = (payload) =>
   jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: process.env.TOKEN_EXPIRES || "2h" });
 
-
-
 const auth = (req, res, next) => {
   const header = req.headers.authorization || "";
   const token = header.startsWith("Bearer ") ? header.slice(7) : null;
@@ -48,8 +46,6 @@ const auth = (req, res, next) => {
     return res.status(401).json({ error: "Invalid or expired token" });
   }
 };
-
-
 const allowRoles = (...roles) => (req, res, next) => {
   if (!req.user) return res.status(401).json({ error: "Unauthenticated" });
   if (!roles.includes(req.user.role)) return res.status(403).json({ error: "Forbidden" });
@@ -72,31 +68,23 @@ app.post("/auth/login", async (req, res) => {
   });
 });
 
-
-
 app.get("/auth/me", auth, (req, res) => {
   res.json({ user: req.user });
 });
-
 
 app.get("/", (req, res) => {
   res.send("Backend is running ✅");
 });
 
-
-
 // admin 
-
 app.get("/admin/users", auth, allowRoles("admin"), (req, res) => {
 
   const filteredUsers = USERS
     .filter(u => u.role === "merchant" || u.role === "member")
-    .map(({ passwordHash, ...rest }) => rest); 
+    .map(({ passwordHash, ...rest }) => rest);
 
   res.json({ users: filteredUsers });
 });
-
-
 
 // Start server
 app.listen(PORT, () => {
