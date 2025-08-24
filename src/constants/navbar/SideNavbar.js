@@ -27,17 +27,10 @@ export default function SideNavbar() {
 
   return (
     <div className="flex w-full ">
-
-
-
-      <div className="  ">
-
+      <div className="">
         <div
           className={`bg-primary text-white w-72 space-y-6 py-7 px-2 fixed md:sticky top-0 left-0 h-screen z-20 transform ${isOpen ? "translate-x-0" : "-translate-x-full"
-            } md:translate-x-0 transition duration-300 ease-in-out`}
-        >
-
-
+            } md:translate-x-0 transition duration-300 ease-in-out`}>
           <div className="flex justify-around mb-10">
             <h1 className="text-2xl font-semibold text-center ">Rewords Point</h1>
             <button
@@ -60,22 +53,17 @@ export default function SideNavbar() {
               </svg>
             </button>
           </div>
-
-
           <nav>
             {routes.map((link, index) => (
               <div key={index} className="mb-2">
                 <div
-                  className="flex items-center justify-between py-2.5 px-4 cursor-pointer rounded transition duration-200 text-[#fff] hover:bg-gray-700"
+                  className="flex items-center justify-between py-2.5 px-4 cursor-pointer rounded transition duration-200 text-[#fff] hover:bg-secondary"
                   onClick={() => (link.children ? toggleMenu(link.name) : null)}
                 >
-                  <Link to={link.path} className="flex-1 flex gap-2 font-roboto text-base">
+                  <Link to={link.path} className="flex-1 flex gap-2 font-roboto font-semibold text-base">
                     <p className="flex items-center">{link.icon}</p>
                     <p className="flex items-center"> {link.name}</p>
-
                   </Link>
-
-
                   {link.children &&
                     (openMenus[link.name] ? (
                       <ChevronUp className="w-4 h-4" />
@@ -91,7 +79,7 @@ export default function SideNavbar() {
                       <Link
                         key={childIndex}
                         to={`/${child.path}`}
-                        className=" py-2 px-4 text-gray-300  rounded hover:bg-gray-600 font-roboto text-base transition duration-200 flex  items-center  gap-2"
+                        className=" py-2 px-4 text-white  rounded hover:bg-secondary font-roboto text-base transition duration-200 flex  items-center  gap-2"
                       >
                         <p className="flex items-center ">{child.icon}</p>
                         <p className="flex items-center">{child.name}</p>
@@ -110,7 +98,6 @@ export default function SideNavbar() {
           onClick={() => setIsOpen(false)}
         ></div>
       )}
-
 
       <div className="flex-1 flex flex-col h-screen">
         <Header isOpe={isOpen} setIsOpen={setIsOpen}></Header>

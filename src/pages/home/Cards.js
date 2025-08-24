@@ -1,45 +1,10 @@
-import { FileText, CheckCircle, Clock, Trash2, TrendingUp, TrendingDown, Users, Award, Gift, DollarSign, Zap, Star, Plus } from "lucide-react"
+import { TrendingUp, TrendingDown, Users, Award, Gift, DollarSign, Zap, Star } from "lucide-react"
+import RecentUsers from "./RecentUsers";
+import PopularRewards from "./PopularRewards";
 
 export default function Cards() {
 
-  const recentUsers = [
-    {
-      name: "Sarah Johnson",
-      email: "sarah@example.com",
-      points: 2450,
-      status: "Gold",
-      avatar: "/diverse-woman-portrait.png",
-    },
-    {
-      name: "Mike Chen",
-      email: "mike@example.com",
-      points: 1890,
-      status: "Silver",
-      avatar: "/thoughtful-man.png",
-    },
-    {
-      name: "Emma Davis",
-      email: "emma@example.com",
-      points: 3200,
-      status: "Platinum",
-      avatar: "/diverse-woman-portrait.png",
-    },
-    {
-      name: "Alex Rodriguez",
-      email: "alex@example.com",
-      points: 1250,
-      status: "Bronze",
-      avatar: "/thoughtful-man.png",
-    },
-    { name: "Lisa Wang", email: "lisa@example.com", points: 2800, status: "Gold", avatar: "/diverse-woman-portrait.png" },
-  ]
 
-  const recentRewards = [
-    { name: "50% Off Premium", type: "Discount", cost: 500, claimed: 234, total: 500 },
-    { name: "Free Shipping", type: "Benefit", cost: 200, claimed: 456, total: 1000 },
-    { name: "$10 Gift Card", type: "Voucher", cost: 1000, claimed: 89, total: 200 },
-    { name: "VIP Access", type: "Experience", cost: 2000, claimed: 12, total: 50 },
-  ]
 
   const stats = [
     {
@@ -134,100 +99,12 @@ export default function Cards() {
               );
             })}
           </div>
-
-
-
-
           {/* Recent Activity */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Recent Users */}
-            <div className="bg-white/80 backdrop-blur-sm border border-gray-200 shadow-lg rounded-xl p-4">
-              <div className="flex items-center justify-between mb-2">
-                <span className="flex items-center gap-2 font-semibold text-gray-800">
-                  <Users className="w-5 h-5 text-indigo-500" />
-                  Recent Users
-                </span>
-                <button className="flex items-center px-3 py-1 text-sm rounded-md text-white bg-gradient-to-r from-indigo-500 to-pink-500 hover:from-indigo-600 hover:to-pink-600 transition">
-                  <Plus className="w-4 h-4 mr-1" />
-                  Add User
-                </button>
-              </div>
-              <p className="text-sm text-gray-500 mb-4">Latest user registrations and activity</p>
-
-              <div className="space-y-3">
-                {recentUsers.map((user, i) => (
-                  <div
-                    key={i}
-                    className="flex items-center justify-between p-3 rounded-lg bg-gray-100 hover:bg-gray-200 transition"
-                  >
-                    <div className="flex items-center gap-3">
-                      {user.avatar ? (
-                        <img src={user.avatar} alt={user.name} className="h-10 w-10 rounded-full border-2 border-indigo-200" />
-                      ) : (
-                        <div className="h-10 w-10 flex items-center justify-center rounded-full bg-gradient-to-br from-indigo-200 to-pink-200 text-gray-700 font-semibold">
-                          {user.name.split(" ").map((n) => n[0]).join("")}
-                        </div>
-                      )}
-                      <div>
-                        <p className="text-sm font-medium">{user.name}</p>
-                        <p className="text-xs text-gray-500">{user.email}</p>
-                      </div>
-                    </div>
-                    <div className="text-right">
-                      <span
-                        className={`px-2 py-1 text-xs rounded-md font-medium ${user.status === "Platinum"
-                          ? "bg-gradient-to-r from-indigo-500 to-pink-500 text-white"
-                          : "bg-gray-200 text-gray-600"
-                          }`}
-                      >
-                        {user.status}
-                      </span>
-                      <p className="text-xs text-gray-500 mt-1 font-medium">{user.points.toLocaleString()} pts</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
+            <RecentUsers></RecentUsers>
             {/* Popular Rewards */}
-            <div className="bg-white/80 backdrop-blur-sm border border-gray-200 shadow-lg rounded-xl p-4">
-              <div className="flex items-center justify-between mb-2">
-                <span className="flex items-center gap-2 font-semibold text-gray-800">
-                  <Gift className="w-5 h-5 text-pink-500" />
-                  Popular Rewards
-                </span>
-                <button className="flex items-center px-3 py-1 text-sm rounded-md text-white bg-gradient-to-r from-pink-500 to-emerald-500 hover:from-pink-600 hover:to-emerald-600 transition">
-                  <Plus className="w-4 h-4 mr-1" />
-                  Create Reward
-                </button>
-              </div>
-              <p className="text-sm text-gray-500 mb-4">Most claimed rewards this month</p>
-
-              <div className="space-y-3">
-                {recentRewards.map((reward, i) => (
-                  <div key={i} className="space-y-2 p-3 rounded-lg bg-gray-100 hover:bg-gray-200 transition">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <p className="text-sm font-medium">{reward.name}</p>
-                        <p className="text-xs text-gray-500">
-                          {reward.type} • <span className="font-medium text-pink-500">{reward.cost} points</span>
-                        </p>
-                      </div>
-                      <span className="px-2 py-1 text-xs border border-pink-400 text-pink-500 rounded-md">
-                        {reward.claimed}/{reward.total}
-                      </span>
-                    </div>
-                    {/* progress bar */}
-                    <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
-                      <div
-                        className="h-2 bg-pink-500 rounded-full"
-                        style={{ width: `${(reward.claimed / reward.total) * 100}%` }}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+            <PopularRewards></PopularRewards>
           </div>
         </div>
       </div>

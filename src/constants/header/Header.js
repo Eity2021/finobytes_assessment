@@ -4,11 +4,11 @@ export default function Header({ isOpen, setIsOpen }) {
   return (
     <>
       <header
-        className={`flex md:block gap-4 items-center bg-[#F4FDF3] shadow-md px-12 py-4 relative`}
+        className={`  bg-[#F4FDF3] shadow-md px-12 py-4 relative`}
       >
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden flex text-gray-800 focus:outline-none absolute top-16 left-6">
+          className="md:hidden flex text-gray-800 focus:outline-none absolute top-9 left-6">
           <svg
             className="w-8 h-8"
             fill="none"

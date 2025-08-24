@@ -1,4 +1,4 @@
-import { Bell,  Search} from "lucide-react";
+import { Bell, Search } from "lucide-react";
 
 export default function SideHeader() {
   return (
@@ -6,12 +6,16 @@ export default function SideHeader() {
       <div className="flex justify-between">
         <div>
           <h1 className="text-2xl font-bold text-heading ">Dashboard</h1>
-          <p className="text-muted-foreground text-text_paragraph">
+          <p className="text-muted-foreground text-text_paragraph  xl:flex hidden">
             Welcome back! Here's what's happening with your rewards program.
           </p>
+          <p className="text-muted-foreground text-text_paragraph  xl:hidden block">
+            Welcome back! Here's...
+          </p>
         </div>
+
         <div className="flex items-center gap-4">
-          <div className="relative">
+          <div className="relative xl:flex hidden">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4 " />
             <input placeholder="Search..." className="pl-10 w-64 border border-borderColor py-2 rounded-md bg-[#F8FEF9]  outline-none focus:ring-0 focus:outline-primary shadow-md" />
           </div>
