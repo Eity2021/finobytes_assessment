@@ -6,16 +6,17 @@ import {
   Routes,
   Navigate,
 } from "react-router";
-import Main from "./pages/main/Main";
+
 import Login from "./constants/auth/Login";
+import Main from "./constants/main/Main";
 
 function App() {
 
-  
+
   return (
     <>
 
-        <Router>
+      <Router>
         <Routes>
           <Route path="/login" element={<Login />} />
           {/* Place new routes over this */}

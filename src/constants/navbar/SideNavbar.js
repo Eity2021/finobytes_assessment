@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, Routes, Route } from "react-router";
 import adminRoutes from "../../routes/adminRoutes";
+import merchantRoutes from "../../routes/merchantRoutes";
 import memberRoutes from "../../routes/memberRoutes";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import Header from "../../constants/header/Header";
@@ -15,8 +16,19 @@ export default function SideNavbar() {
       [name]: !prev[name],
     }));
   };
-  const role = "admin"
-  const routes = role === "admin" ? adminRoutes : memberRoutes
+
+  const auth = JSON.parse(localStorage.getItem("auth"));
+  console.log("auth", auth?.role)
+
+  const routes =
+    auth?.role === "admin"
+      ? adminRoutes
+      : auth?.role === "member"
+        ? memberRoutes
+        : auth?.role === "merchant"
+          ? merchantRoutes
+          : [];
+
 
   const renderRoutes = (routes) =>
     routes.map((route, index) => (
