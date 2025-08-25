@@ -1,13 +1,20 @@
 import { Suspense } from "react";
-import Settings from "../pages/merchants/settings/Settings";
-import Purchases from "../pages/merchants/purchases/Purchases";
-import Customers from "../pages/merchants/customer/Customers";
-import MerchantDashboard from "../pages/merchants/dashboard/Index";
-import { LayoutDashboard, ShoppingBasket, ListEnd, SquarePlus } from "lucide-react";
+import Customers from "../pages/merchants/customer";
+import Purchases from "../pages/merchants/purchases";
+import MerchantDashboard from "../pages/merchants/dashboard";
+import ContributorRate from "../pages/merchants/contributorRate";
+import Notification from "../pages/merchants/notification";
+import {
+  LayoutDashboard,
+  ShoppingBasket,
+  ListEnd,
+  SquarePlus,
+} from "lucide-react";
+
 
 const merchantRoutes = [
   {
-    path: "/",
+    path: "/dashboard",
     name: "Dashboard",
     icon: <LayoutDashboard size={20} />,
     element: (
@@ -21,7 +28,7 @@ const merchantRoutes = [
     icon: <ShoppingBasket size={20} />,
     children: [
       {
-        path: "customers",
+        path: "dashboard/customers",
         name: "Customers",
         icon: <ListEnd size={20} />,
         element: (
@@ -31,7 +38,7 @@ const merchantRoutes = [
         ),
       },
       {
-        path: "purchases",
+        path: "dashboard/purchases",
         name: "Purchases",
         icon: <SquarePlus size={20} />,
         element: (
@@ -41,17 +48,29 @@ const merchantRoutes = [
         ),
       },
       {
-        path: "settings",
-        name: "Settings",
+        path: "dashboard/contributor",
+        name: "Contributor Rate",
         icon: <SquarePlus size={20} />,
         element: (
           <Suspense fallback={<p>Loading...</p>}>
-            <Settings></Settings>
+            <ContributorRate />
           </Suspense>
         ),
       },
     ],
   },
+
+  {
+    path: "/notification",
+    name: "Notification",
+    icon: <LayoutDashboard size={20} />,
+    element: (
+      <Suspense fallback={<p>Loading...</p>}>
+        <Notification />
+      </Suspense>
+    ),
+  },
+
 ];
 
 export default merchantRoutes;

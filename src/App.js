@@ -10,6 +10,7 @@ import {
 import Login from "./constants/auth/Login";
 import Main from "./constants/main/Main";
 import PrivateRoutes from "./hooks/PrivateRoute";
+import Notification from "./pages/merchants/notification";
 
 function App() {
   const auth = JSON.parse(localStorage.getItem("auth"));

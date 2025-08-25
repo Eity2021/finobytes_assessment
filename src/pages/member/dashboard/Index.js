@@ -1,5 +1,3 @@
 export default function MemberDashboard() {
-    return (
-        <div>Index</div>
-    )
+  return <div>Index</div>;
 }

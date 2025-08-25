@@ -41,7 +41,7 @@ export default function SideNavbar() {
     <div className="flex w-full ">
       <div className="">
         <div
-          className={`bg-primary text-white w-72 space-y-6 py-7 px-2 fixed md:sticky top-0 left-0 h-screen z-20 transform ${isOpen ? "translate-x-0" : "-translate-x-full"
+          className={`bg-primary text-white w-72 space-y-6 py-7 px-2 fixed md:sticky top-0 left-0 h-screen z-20 transform shadow-2xl  ${isOpen ? "translate-x-0" : "-translate-x-full"
             } md:translate-x-0 transition duration-300 ease-in-out`}>
           <div className="flex justify-around mb-10">
             <h1 className="text-2xl font-semibold text-center ">Rewords Point</h1>

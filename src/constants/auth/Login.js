@@ -21,7 +21,7 @@ export default function Login() {
     if (data?.token) {
       dispatch(userLoggedIn());
       // dispatch(setUser(data));
-      navigate("/");
+      navigate("/dashboard");
       toast.success("Login Successfully")
     }
   }, [data, dispatch]);

@@ -1,11 +1,11 @@
 import { Suspense } from "react";
-import { LayoutDashboard, ShoppingBasket, ListEnd, SquarePlus } from "lucide-react";
-import MemberDashboard from "../pages/member/dashboard/Index";
+import { LayoutDashboard, ShoppingBasket, ListEnd } from "lucide-react";
+import MemberDashboard from "../pages/member/dashboard";
 import SummeryPoints from "../pages/member/summery/SummeryPoints";
 
 const memberRoutes = [
   {
-    path: "/",
+    path: "/dashboard",
     name: "Dashboard",
     icon: <LayoutDashboard size={20} />,
     element: (
@@ -29,7 +29,6 @@ const memberRoutes = [
           </Suspense>
         ),
       },
-
     ],
   },
 ];
