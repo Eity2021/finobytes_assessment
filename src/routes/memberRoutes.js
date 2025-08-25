@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { LayoutDashboard, ShoppingBasket, ListEnd } from "lucide-react";
 import MemberDashboard from "../pages/member/dashboard";
-import SummeryPoints from "../pages/member/summery/SummeryPoints";
+import SummeryPoints from "../pages/member/summery";
 
 const memberRoutes = [
   {
@@ -20,7 +20,7 @@ const memberRoutes = [
 
     children: [
       {
-        path: "dashboard/Summery",
+        path: "dashboard/summery",
         name: "Summery Points",
         icon: <ListEnd size={20} />,
         element: (

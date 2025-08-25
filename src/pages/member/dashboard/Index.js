@@ -2,8 +2,12 @@ import PointsOverview from "./PointsOverview";
 import Benefits from "./Benefits";
 import ActiveChallenge from "./ActiveChallenge";
 import Activities from "./Activities";
-
+import { useNavigate } from "react-router";
 export default function MemberDashboard() {
+  const navigate = useNavigate();
+  const handle = () => {
+    navigate("summery");
+  };
   const memberData = {
     name: "Member",
     memberSince: "January 2023",
@@ -66,7 +70,10 @@ export default function MemberDashboard() {
               </p>
             </div>
           </div>
-          <button className="bg-gradient-to-r from-[#3b680c] to-[#b5bd20] text-white px-4 py-2 rounded-lg">
+          <button
+            className="bg-gradient-to-r from-[#3b680c] to-[#b5bd20] text-white px-4 py-2 rounded-lg"
+            onClick={handle}
+          >
             View Points Summary
           </button>
         </div>

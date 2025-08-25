@@ -15,11 +15,9 @@ module.exports = {
         editButton: "#2F6CD0",
         borderColor: "#f1f1f1",
         text_paragraph: "#4a5568",
-        heading: "#222"
-
+        heading: "#222",
       },
     },
   },
   plugins: [require("daisyui")],
-}
-
+};
