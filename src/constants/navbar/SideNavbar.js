@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, Routes, Route } from "react-router";
 import adminRoutes from "../../routes/adminRoutes";
 import merchantRoutes from "../../routes/merchantRoutes";
@@ -18,17 +18,15 @@ export default function SideNavbar() {
   };
 
   const auth = JSON.parse(localStorage.getItem("auth"));
-  console.log("auth", auth?.role)
 
   const routes =
     auth?.role === "admin"
       ? adminRoutes
       : auth?.role === "member"
-        ? memberRoutes
-        : auth?.role === "merchant"
-          ? merchantRoutes
-          : [];
-
+      ? memberRoutes
+      : auth?.role === "merchant"
+      ? merchantRoutes
+      : [];
 
   const renderRoutes = (routes) =>
     routes.map((route, index) => (
@@ -41,10 +39,14 @@ export default function SideNavbar() {
     <div className="flex w-full ">
       <div className="">
         <div
-          className={`bg-primary text-white w-72 space-y-6 py-7 px-2 fixed md:sticky top-0 left-0 h-screen z-20 transform shadow-2xl  ${isOpen ? "translate-x-0" : "-translate-x-full"
-            } md:translate-x-0 transition duration-300 ease-in-out`}>
+          className={`bg-primary text-white w-72 space-y-6 py-7 px-2 fixed md:sticky top-0 left-0 h-screen z-20 transform shadow-2xl  ${
+            isOpen ? "translate-x-0" : "-translate-x-full"
+          } md:translate-x-0 transition duration-300 ease-in-out`}
+        >
           <div className="flex justify-around mb-10">
-            <h1 className="text-2xl font-semibold text-center ">Rewords Point</h1>
+            <h1 className="text-2xl font-semibold text-center ">
+              Rewords Point
+            </h1>
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="md:hidden text-white focus:outline-none"
@@ -72,7 +74,10 @@ export default function SideNavbar() {
                   className="flex items-center justify-between py-2.5 px-4 cursor-pointer rounded transition duration-200 text-[#fff] hover:bg-secondary"
                   onClick={() => (link.children ? toggleMenu(link.name) : null)}
                 >
-                  <Link to={link.path} className="flex-1 flex gap-2 font-roboto font-semibold text-base">
+                  <Link
+                    to={link.path}
+                    className="flex-1 flex gap-2 font-roboto font-semibold text-base"
+                  >
                     <p className="flex items-center">{link.icon}</p>
                     <p className="flex items-center"> {link.name}</p>
                   </Link>
@@ -85,8 +90,13 @@ export default function SideNavbar() {
                 </div>
 
                 {link.children && openMenus[link.name] && (
-                  <div className={`ml-6 space-y-2 overflow-hidden transition-all duration-300 ease-in-out ${openMenus[link.name] ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-                    }`}>
+                  <div
+                    className={`ml-6 space-y-2 overflow-hidden transition-all duration-300 ease-in-out ${
+                      openMenus[link.name]
+                        ? "max-h-96 opacity-100"
+                        : "max-h-0 opacity-0"
+                    }`}
+                  >
                     {link.children.map((child, childIndex) => (
                       <Link
                         key={childIndex}
@@ -110,14 +120,12 @@ export default function SideNavbar() {
           onClick={() => setIsOpen(false)}
         ></div>
       )}
-
       <div className="flex-1 flex flex-col h-screen">
         <Header isOpe={isOpen} setIsOpen={setIsOpen}></Header>
         <main className="flex-1 p-6 bg-gray-100 overflow-y-auto">
           <Routes>{renderRoutes(routes)}</Routes>
         </main>
       </div>
-
     </div>
   );
 }

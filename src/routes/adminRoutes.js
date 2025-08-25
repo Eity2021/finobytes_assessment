@@ -6,12 +6,12 @@ import { LayoutDashboard, BetweenHorizontalEnd, ListEnd } from "lucide-react";
 
 const adminRoutes = [
   {
-    path: "/",
+    path: "/dashboard",
     name: "Dashboard",
     icon: <LayoutDashboard size={20} />,
     element: (
       <Suspense fallback={<p>Loading...</p>}>
-        <PrivateRoute >
+        <PrivateRoute>
           <AdminDashboard />
         </PrivateRoute>
       </Suspense>

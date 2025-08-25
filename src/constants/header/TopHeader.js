@@ -24,7 +24,6 @@ export default function TopHeader() {
   };
 
   const { data: profile } = useGetProfileQuery();
-  console.log("profile", profile);
   return (
     <>
       <header className="px-6 py-2">
