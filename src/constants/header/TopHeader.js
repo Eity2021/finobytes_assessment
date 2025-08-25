@@ -1,6 +1,7 @@
-import { Bell, Search, LogOut, Settings } from "lucide-react";
+import { Bell, Search, LogOut, User } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router";
+import { useGetProfileQuery } from "../../features/profile/profileApi";
 
 export default function TopHeader() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -19,11 +20,13 @@ export default function TopHeader() {
 
   const logout = () => {
     localStorage.clear("auth");
-    navigate("/login")
-  }
+    navigate("/login");
+  };
+
+  const { data: profile } = useGetProfileQuery();
+  console.log("profile", profile);
   return (
     <>
-
       <header className="px-6 py-2">
         <div className="flex justify-between">
           <div>
@@ -39,9 +42,16 @@ export default function TopHeader() {
           <div className="flex items-center gap-4">
             <div className="relative xl:flex hidden">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4 " />
-              <input placeholder="Search..." className="pl-10 w-64 border border-borderColor py-2 rounded-md bg-[#F8FEF9]  outline-none focus:ring-0 focus:outline-primary shadow-md" />
+              <input
+                placeholder="Search..."
+                className="pl-10 w-64 border border-borderColor py-2 rounded-md bg-[#F8FEF9]  outline-none focus:ring-0 focus:outline-primary shadow-md"
+              />
             </div>
-            <button size="icon" variant="outline" className="bg-white p-3 shadow-md rounded-md">
+            <button
+              size="icon"
+              variant="outline"
+              className="bg-white p-3 shadow-md rounded-md"
+            >
               <Bell className="w-4 h-4" />
             </button>
 
@@ -56,9 +66,12 @@ export default function TopHeader() {
               {isDropdownOpen && (
                 <div className="absolute right-0 mt-2 w-40 bg-white shadow-lg rounded-md overflow-hidden z-50">
                   <button className="flex items-center gap-2 px-4 py-2 text-gray-700 hover:bg-gray-100 w-full">
-                    <Settings className="w-4 h-4" /> Settings
+                    <User className="w-4 h-4" /> {profile?.user?.name}
                   </button>
-                  <button className="flex items-center gap-2 px-4 py-2 text-gray-700 hover:bg-gray-100 w-full" onClick={logout}>
+                  <button
+                    className="flex items-center gap-2 px-4 py-2 text-gray-700 hover:bg-gray-100 w-full"
+                    onClick={logout}
+                  >
                     <LogOut className="w-4 h-4" /> Logout
                   </button>
                 </div>
@@ -67,8 +80,6 @@ export default function TopHeader() {
           </div>
         </div>
       </header>
-
     </>
-
   );
 }

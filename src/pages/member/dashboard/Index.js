@@ -9,7 +9,7 @@ export default function MemberDashboard() {
     navigate("summery");
   };
   const memberData = {
-    name: "Member",
+    name: "Mina Member",
     memberSince: "January 2023",
     totalPoints: 2847,
     pointsToNextReward: 653,
