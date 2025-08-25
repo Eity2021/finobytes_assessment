@@ -20,7 +20,7 @@ const memberRoutes = [
 
     children: [
       {
-        path: "Summery",
+        path: "dashboard/Summery",
         name: "Summery Points",
         icon: <ListEnd size={20} />,
         element: (
