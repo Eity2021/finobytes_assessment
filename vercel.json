@@ -1,0 +1,53 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "build"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/static/(.*)",
+      "headers": {
+        "cache-control": "s-maxage=31536000,immutable"
+      },
+      "dest": "/static/$1"
+    },
+    {
+      "src": "/(.*).ico",
+      "headers": {
+        "cache-control": "s-maxage=31536000,immutable"
+      },
+      "dest": "/$1.ico"
+    },
+    {
+      "src": "/(.*).js",
+      "headers": {
+        "cache-control": "s-maxage=31536000,immutable"
+      },
+      "dest": "/$1.js"
+    },
+    {
+      "src": "/(.*).css",
+      "headers": {
+        "cache-control": "s-maxage=31536000,immutable"
+      },
+      "dest": "/$1.css"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ],
+  "installCommand": "npm install --legacy-peer-deps",
+  "devCommand": "npm start",
+  "framework": "create-react-app",
+  "outputDirectory": "build",
+  "env": {
+    "REACT_APP_API_URL": "https://your-backend-domain.vercel.app/api"
+  }
+}
