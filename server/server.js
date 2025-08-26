@@ -43,7 +43,11 @@ const seedUsers = async () => {
   }
   return users;
 };
-let USERS = await seedUsers();
+
+let USERS = [];
+(async () => {
+  USERS = await seedUsers();
+})();
 
 const signToken = (payload) =>
   jwt.sign(payload, process.env.JWT_SECRET, {
@@ -57,12 +61,13 @@ const auth = (req, res, next) => {
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = decoded; // { id, email, role, name }
+    req.user = decoded;
     next();
   } catch (e) {
     return res.status(401).json({ error: "Invalid or expired token" });
   }
 };
+
 const allowRoles =
   (...roles) =>
   (req, res, next) => {
