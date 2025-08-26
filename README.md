@@ -10,3 +10,17 @@ npm install<br/>
 npm start<br/>
 Backend Server: Running on http://localhost:5000<br/>
 Frontend Client: Running on http://localhost:3000<br/>
+
+Admin Dashboard Login: <br/>
+email: "admin@example.com",<br/>
+password: "admin123",<br/>
+
+
+Merchant Dashboard Login: <br/>
+email: "merchant@example.com",
+password: "merchant123"
+
+
+Member Dashboard Login: <br/>
+email: "member@example.com"
+password: "member123"
