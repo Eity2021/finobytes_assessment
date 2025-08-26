@@ -1,7 +1,7 @@
-git clone <repository-url>
-cd <project-directory>
+git clone repository-url
+cd project-directory
 
-cd server
+cd server<br>
 npm install
 npm run dev
 
